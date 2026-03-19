@@ -203,18 +203,18 @@ Read [LIMITATIONS.md](LIMITATIONS.md) before using. Key points:
 - Organ-specific biological age estimation
 - Methodology paper
 
-Star this repo or follow [@Healome](https://twitter.com/healome) for updates.
+Star this repo or follow [@Healome](https://twitter.com/nikhilyadala) for updates.
 
 ## About Healome
 
-Healome is a longevity-focused health technology company building blood-based aging models and tools for longitudinal health tracking. Learn more at [healome.com](https://healome.com).
+Healome is a longevity-focused health technology company building blood-based aging models and tools for longitudinal health tracking. Learn more at [healome.ai](https://healome.ai).
 
 ## Citation
 
 ```bibtex
 @software{healome_aging_clock,
   author = {Nikhil Yadala},
-  title = {The Healome Aging Clock},
+  title = {Interpretable, Actionable, and Clinically meaningful Biological Aging Clocks},
   year = {2026},
   url = {https://github.com/healome/healome-aging-clock}
 }
