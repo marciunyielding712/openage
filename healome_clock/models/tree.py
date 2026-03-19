@@ -16,6 +16,7 @@ from typing import Union, Optional, Dict, List
 from pathlib import Path
 
 WEIGHTS_DIR = Path(__file__).parent / "weights"
+HF_WEIGHTS_REPO = "Healome/healome-clock-weights"
 
 # --- Exact feature orders as used during training (order matters for .joblib) ---
 
@@ -182,11 +183,31 @@ class TreeModel:
 
     def _load(self):
         if not self._model_path.exists():
+            self._download_weights()
+        if not self._model_path.exists():
             raise FileNotFoundError(
                 f"Model weights not found at {self._model_path}. "
-                f"Expected file: {self.config['weights_file']}"
+                f"Expected file: {self.config['weights_file']}. "
+                f"Download from https://huggingface.co/{HF_WEIGHTS_REPO} or install with: pip install huggingface_hub"
             )
         self._model = joblib.load(self._model_path)
+
+    def _download_weights(self) -> None:
+        """Try to download missing weights from the Hugging Face Hub."""
+        try:
+            from huggingface_hub import hf_hub_download
+        except ImportError:
+            return
+        filename = self.config["weights_file"]
+        try:
+            hf_hub_download(
+                repo_id=HF_WEIGHTS_REPO,
+                filename=filename,
+                local_dir=WEIGHTS_DIR,
+                local_dir_use_symlinks=False,
+            )
+        except Exception:
+            pass
 
     @property
     def model(self):

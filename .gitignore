@@ -27,8 +27,8 @@ env/
 .DS_Store
 Thumbs.db
 
-# Model weights — large files, use Git LFS
-# The .joblib files in healome_clock/models/weights/ ARE tracked (via LFS)
+# Model weights — hosted on Hugging Face Hub (see README)
+healome_clock/models/weights/*.joblib
 *.pkl
 *.pt
 *.pth

@@ -27,7 +27,7 @@ cd healome-aging-clock
 pip install -e .
 ```
 
-Model weights (`.joblib` files) are in `healome_clock/models/weights/` and are included in the repo. If cloning without Git LFS, you may need to download them separately from releases.
+Model weights and the NHANES validation dataset are hosted on the [Hugging Face Hub](https://huggingface.co/Healome). Download them once (see below) or let the library fetch weights automatically when you first use a model.
 
 ### Requirements
 
@@ -85,7 +85,7 @@ print(result.summary())
 
 Both models: GradientBoosting trained on ~50K NHANES records (2003-2020), validated with Cox PH survival analysis (concordance = 0.99).
 
-Models load from `healome_clock/models/weights/` (standard_21feat.joblib, extended_35feat.joblib). These files are included in the repo. Ensure they exist before running inference.
+Models load from `healome_clock/models/weights/` (standard_21feat.joblib, extended_35feat.joblib). If the files are missing, the library will try to download them from the Hub; otherwise see [Downloading model weights and validation data](#downloading-model-weights-and-validation-data) below.
 
 ```python
 from healome_clock import HealomeClock
@@ -96,6 +96,54 @@ clock = HealomeClock(variant="standard")
 # Extended model (35 features for comprehensive panels)
 clock = HealomeClock(variant="extended")
 ```
+
+## Downloading model weights and validation data
+
+Model weights and the NHANES validation dataset are hosted on the **Hugging Face Hub** under [Healome](https://huggingface.co/Healome):
+
+| Resource | Hugging Face repo | Local path (after download) |
+|----------|-------------------|-----------------------------|
+| **Model weights** | [Healome/healome-clock-weights](https://huggingface.co/Healome/healome-clock-weights) | `healome_clock/models/weights/` |
+| **NHANES validation data** | [Healome/nhanes-validation-data](https://huggingface.co/Healome/nhanes-validation-data) | `nhanes_data_dump/` |
+
+### Model weights (standard_21feat.joblib, extended_35feat.joblib)
+
+**Option A — automatic:** If you have `huggingface_hub` installed, the library will download missing weights from the Hub the first time you use `HealomeClock` or `predict_age`.
+
+**Option B — Python:**
+```python
+from huggingface_hub import hf_hub_download
+from pathlib import Path
+
+weights_dir = Path("healome_clock/models/weights")
+weights_dir.mkdir(parents=True, exist_ok=True)
+for name in ["standard_21feat.joblib", "extended_35feat.joblib"]:
+    hf_hub_download(repo_id="Healome/healome-clock-weights", filename=name, local_dir=weights_dir)
+```
+
+**Option C — CLI:**
+```bash
+huggingface-cli download Healome/healome-clock-weights standard_21feat.joblib --local-dir healome_clock/models/weights
+huggingface-cli download Healome/healome-clock-weights extended_35feat.joblib --local-dir healome_clock/models/weights
+```
+
+### NHANES validation data (nhanes_data_dump)
+
+To run `tests/validate_on_nhanes.py`, download the dataset into the repo root:
+
+```bash
+huggingface-cli download Healome/nhanes-validation-data --local-dir nhanes_data_dump --repo-type dataset
+```
+
+Or in Python:
+```python
+from huggingface_hub import snapshot_download
+snapshot_download(repo_id="Healome/nhanes-validation-data", repo_type="dataset", local_dir="nhanes_data_dump")
+```
+
+Place the contents so that `nhanes_data_dump/2017-2020/` and (optionally) `nhanes_data_dump/extended_data/` match the structure described in `nhanes_data_dump/README.md`.
+
+**Maintainers:** To upload or update the Hub assets, use `python scripts/upload_to_huggingface.py` (weights) or add `--dataset` for the NHANES validation data. Requires `huggingface_hub` and `huggingface-cli login`.
 
 ## Training Data
 

@@ -18,9 +18,6 @@ setup(
     },
     packages=find_packages(),
     include_package_data=True,
-    package_data={
-        "healome_clock": ["models/weights/*.joblib"],
-    },
     python_requires=">=3.8",
     install_requires=[
         "numpy>=1.21,<2",
@@ -35,6 +32,9 @@ setup(
         ],
         "neural": [
             "torch>=1.9",
+        ],
+        "hub": [
+            "huggingface_hub>=0.20",
         ],
         "dev": [
             "pytest>=7.0",
