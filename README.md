@@ -4,7 +4,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/healome/healome-aging-clock/blob/main/notebooks/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nikhilYadala/healome_bio_age/blob/main/notebooks/demo.ipynb)
 
 ---
 
@@ -34,8 +34,8 @@ Starting from roughly **120 blood-related biomarkers**, we progressively dropped
 ## Quick Start
 
 ```bash
-git clone https://github.com/healome/healome-aging-clock.git
-cd healome-aging-clock
+git clone https://github.com/nikhilYadala/healome_bio_age.git
+cd healome_bio_age
 pip install -e .
 ```
 
@@ -140,7 +140,7 @@ print(result.summary())
 
 CSV/JSON column names can use these same friendly keys (or the original survey codes).
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/healome/healome-aging-clock/blob/main/notebooks/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nikhilYadala/healome_bio_age/blob/main/notebooks/demo.ipynb)
 
 ## Two Model Variants
 

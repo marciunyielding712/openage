@@ -23,8 +23,8 @@ Contributions that improve the model's accuracy, robustness, interpretability, o
 ## Development Setup
 
 ```bash
-git clone https://github.com/healome/healome-aging-clock.git
-cd healome-aging-clock
+git clone https://github.com/nikhilYadala/healome_bio_age.git
+cd healome_bio_age
 pip install -e ".[dev]"
 pytest
 ```
