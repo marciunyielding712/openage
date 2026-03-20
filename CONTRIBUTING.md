@@ -57,4 +57,4 @@ The data loading system is extensible. To add a new data source:
 
 ## Questions?
 
-Open an issue on GitHub or reach out at [nikhil@healome.com](mailto:nikhil@healome.one).
+Open an issue on GitHub or reach out at [nikhil@healome.one](mailto:nikhil@healome.one).
